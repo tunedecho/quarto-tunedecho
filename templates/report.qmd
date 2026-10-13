@@ -1,0 +1,51 @@
+---
+format: tunedecho-report-typst
+title: A single view of the catalog.
+subtitle: Proposal and statement of work for Example University Libraries
+doc-type: Proposal
+date: today
+client:
+  name: Dr. Jane Example, Dean of Libraries
+  institution: Example University
+author: Matt Crump
+toc: false
+paper: white
+---
+
+# Summary
+
+Example University holds its collection records in three systems that disagree. This proposal describes a four-week engagement that produces one working view across all three, built with your staff and documented so they can maintain it.
+
+# The problem
+
+Three systems hold overlapping records: the ILS, the digital repository and a spreadsheet kept by Special Collections. Each is right about something. None is right about everything.
+
+## What we heard
+
+In twelve conversations across four departments, the same request came up: show me the conflicts, side by side, before I decide.
+
+# The method
+
+We work in four movements, always in this order.
+
+1. **Listen.** Sit with the people who use each system and write down what they actually do.
+2. **Trace.** Follow every record type to the system that last wrote it.
+3. **Tune.** Build one working prototype that reads from all three.
+4. **Echo.** Hand it over with documentation your staff can keep.
+
+# Deliverables and schedule
+
+| Week | Movement | Deliverable |
+|---|---|---|
+| 1 | Listen | Written record of current workflows |
+| 2 | Trace | Record lineage for each system |
+| 3 | Tune | Working prototype, first review |
+| 4 | Echo | Handover, documentation, second review |
+
+: Schedule by week {#tbl-schedule}
+
+@tbl-schedule shows the plan. The fixed price covers everything listed; a change in scope is agreed in writing before the work changes.
+
+# What you get
+
+A prototype that runs on your infrastructure, source code with a plain README, and two review sessions with the cataloging team.

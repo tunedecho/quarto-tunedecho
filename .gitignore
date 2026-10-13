@@ -1,0 +1,11 @@
+# Quarto output
+_output/
+/.quarto/
+*.typ
+!_extensions/**/*.typ
+# format-resources copied beside documents at render time
+templates/*.png
+templates/*_files/
+.DS_Store
+
+**/*.quarto_ipynb

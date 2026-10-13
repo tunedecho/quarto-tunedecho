@@ -1,0 +1,25 @@
+---
+format: tunedecho-letter-typst
+date: today
+recipient:
+  name: Dr. Jane Example
+  title: Dean of Libraries
+  institution: Example University
+  address:
+    - 100 College Avenue
+    - Anytown, NY 10000
+salutation: Dear Dr. Example,
+closing: Sincerely,
+signature:
+  name: Matt Crump
+  title: Founder, Tuned Echo Systems LLC
+paper: white
+---
+
+Thank you for walking us through the catalog migration last week. The problem is clear: three systems hold overlapping records of the same collections, and nobody can say which one is right.
+
+We propose a four-week engagement in our usual four movements. We listen to the people who use each system and write down what they actually do. We trace every record type back to its source of truth. We tune a single working prototype that reads from all three and shows the conflicts side by side. Then we hand it over and make sure it echoes in your own workflow, with documentation your staff can maintain.
+
+A short statement of work is attached. The fixed price covers the prototype, two review sessions with your cataloging team, and a written handover. If the scope changes as we learn more, we will say so before the work does.
+
+We would be glad to start the week of November 3. Reply to this letter or book a time at tunedecho.com, and we will send a calendar hold.

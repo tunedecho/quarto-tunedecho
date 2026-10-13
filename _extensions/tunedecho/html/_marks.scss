@@ -1,0 +1,35 @@
+// Shared helpers for the HTML and reveal.js themes: the key strip as inline SVG
+// so it can be a background anywhere. Colors come from _tokens.scss.
+
+@function te-hex($c) {
+  // "#d9738f" -> "%23d9738f" for a data URI
+  @return "%23" + str-slice(inspect($c), 2);
+}
+
+// Seven pill-ended bars with gaps: the section rule.
+@function te-rule-svg($ink: $te-key-ink) {
+  $cols: append($te-key-colors, $ink);
+  $w: 13.6;   // percent per bar
+  $step: 14.4; // percent per bar + gap
+  $svg: '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="4">';
+  $i: 0;
+  @each $c in $cols {
+    $svg: $svg + '<rect x="#{$i * $step}%" y="0" width="#{$w}%" height="4" rx="2" fill="#{te-hex($c)}"/>';
+    $i: $i + 1;
+  }
+  $svg: $svg + '</svg>';
+  @return url("data:image/svg+xml;utf8,#{$svg}");
+}
+
+// Seven square-ended bands with no gap: the print key band, for page and slide feet.
+@function te-band-svg($ink: $te-key-ink) {
+  $cols: append($te-key-colors, $ink);
+  $svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 1" preserveAspectRatio="none">';
+  $i: 0;
+  @each $c in $cols {
+    $svg: $svg + '<rect x="#{$i}" y="0" width="1" height="1" fill="#{te-hex($c)}"/>';
+    $i: $i + 1;
+  }
+  $svg: $svg + '</svg>';
+  @return url("data:image/svg+xml;utf8,#{$svg}");
+}

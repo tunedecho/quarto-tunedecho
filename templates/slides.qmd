@@ -1,0 +1,44 @@
+---
+title: A single view of the catalog.
+subtitle: Proposal review for Example University Libraries
+author: Matt Crump
+date: today
+format: tunedecho-revealjs
+---
+
+# The problem
+
+## Three systems, one collection
+
+- The ILS, the digital repository and a Special Collections spreadsheet each hold part of the record.
+- They disagree on 1,840 items. Most conflicts are dates, not titles.
+- Nobody can say which system is right without opening all three.
+
+## What we heard
+
+> Show me the conflicts, side by side, before I decide.
+
+Twelve conversations, four departments, one request.
+
+# The method
+
+## Listen, trace, tune, echo.
+
+| Week | Movement | Deliverable |
+|---|---|---|
+| 1 | Listen | Written record of current workflows |
+| 2 | Trace | Record lineage for each system |
+| 3 | Tune | Working prototype, first review |
+| 4 | Echo | Handover, documentation, second review |
+
+## What you get
+
+1. A prototype that runs on your infrastructure.
+2. Source code with a plain README.
+3. Two review sessions with the cataloging team.
+
+## Thank you. {.te-closing}
+
+Tell us about the system you wish you had.
+
+tunedecho.com

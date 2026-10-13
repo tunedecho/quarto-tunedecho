@@ -1,0 +1,31 @@
+title: Tuned Echo report
+author: Tuned Echo Systems LLC
+version: 0.1.0
+quarto-required: ">=1.6.0"
+contributes:
+  formats:
+    typst:
+      template-partials:
+        - /_extensions/tunedecho/typst/tokens.typ
+        - /_extensions/tunedecho/typst/tunedecho.typ
+        - /_extensions/tunedecho/typst/page.typ
+        - typst-template.typ
+        - typst-show.typ
+      format-resources:
+        - ../tunedecho/assets/wordmark.png
+        - ../tunedecho/assets/wordmark-motto.png
+        - ../tunedecho/assets/seal.png
+        - ../tunedecho/assets/key-band.png
+      font-paths:
+        - /_extensions/tunedecho/fonts
+      date-format: long
+      paper: white
+      doc-type: Report
+      prepared-by: Tuned Echo Systems LLC
+      number-sections: true
+      toc: false
+      toc-depth: 2
+      descriptor: Mission-built software for higher education and publishing
+      location: Brooklyn, NY
+      fig-width: 6.5
+      fig-height: 4

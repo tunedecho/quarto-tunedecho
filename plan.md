@@ -11,38 +11,39 @@ A Quarto extension that turns markdown (with embedded R or Python) into Tuned Ec
 
 ## Repository layout
 
+Quarto reads a format name as `<extension>-<base format>`, so `tunedecho-letter-typst` must be an extension called `tunedecho-letter`. The print formats are therefore small extensions of their own that share the files in `tunedecho`.
+
 ```
 quarto-tunedecho/
-  _extensions/tunedecho/
-    _extension.yml            registers the formats below
-    _brand.yml                colors, fonts, logos (Quarto brand file)
-    assets/
-      wordmark.png
-      wordmark-motto.png
-      wordmark-reversed.png
-      seal.png
-      seal-reversed.png
-      seal.svg
-      key-band.png
-    typst/
-      tunedecho.typ           shared Typst styles: fonts, colors, key strip, page geometry
-      letter.typ              letterhead first page + continuation pages
-      memo.typ
-      report.typ              proposals, SOWs, reports with cover page
-      typst-template.typ      Quarto entry points (one per format)
-      typst-show.typ
-    html/
-      tunedecho.scss          HTML documents
-      revealjs.scss           slides
-    fonts/                    optional local copies of the three Google fonts
-  templates/
-    letter.qmd                starter documents, one per format
-    memo.qmd
-    report.qmd
-    slides.qmd
-  design-system/              the exported design system folder (README, tokens.json, components, assets)
-  README.md                   install and usage
-  plan.md                     this file
+  _extensions/
+    tunedecho/
+      _extension.yml          registers tunedecho-html and tunedecho-revealjs
+      _brand.yml              generated from tokens.json
+      assets/                 wordmark, seal, key band PNGs
+      fonts/                  the three Google fonts, OFL
+      typst/
+        tokens.typ            generated colors and fonts
+        tunedecho.typ         shared styles: palette, key band, strip, eyebrow, footer, base
+        page.typ              empty; each format sets its own page
+      html/
+        tunedecho.scss        HTML theme
+        revealjs.scss         slides theme
+        _tokens.scss          generated SCSS variables
+        _assets.scss          generated data URIs for the marks
+        _marks.scss           key strip as SVG
+        tokens.css, components.css   copied from the design system
+        fonts.html            Google Fonts link
+        title-slide.html      reveal.js title slide partial
+    tunedecho-letter/         typst-template.typ, typst-show.typ, _extension.yml
+    tunedecho-memo/
+    tunedecho-report/
+  templates/                  letter.qmd, memo.qmd, report.qmd, slides.qmd
+  tests/                      render checks
+  tools/brand-from-tokens.py
+  tuned-echo-design-system/   the exported design system folder
+  _quarto.yml                 project file: renders templates/ and tests/ into _output/, sets brand
+  README.md
+  plan.md
 ```
 
 ## Formats
@@ -59,7 +60,7 @@ Later, if needed: `tunedecho-dashboard` (Quarto dashboards) and `tunedecho-invoi
 
 ## Brand file
 
-`_brand.yml` is filled from `design-system/tokens.json`:
+`_brand.yml` is generated from `tuned-echo-design-system/tokens.json` by `tools/brand-from-tokens.py`:
 
 - `color`: `bg`, `paper`, `ink`, `text`, `muted`, `rule`, `rule-soft`, and the seven key colors. Map `foreground` to `text`, `background` to `bg` (screen) or white (print), `primary` to `ink`.
 - `typography`: `headings` Instrument Serif 400, `base` Plus Jakarta Sans, `monospace` a plain mono (JetBrains Mono or system mono). Oswald is used only inside the Typst and SCSS files for eyebrow labels.
@@ -75,7 +76,7 @@ Quarto applies `_brand.yml` to HTML, reveal.js, dashboards and Typst automatical
 - Bottom edge: full-bleed key band, 8px tall, square ends, on every page.
 - Continuation pages: small `wordmark.png`, running head with recipient, date and page number.
 - Body 11pt Plus Jakarta Sans, 1.6 line height.
-- YAML fields: `to` (name, title, institution, address lines), `date`, `salutation`, `closing`, `signature` (name, title), `paper`.
+- YAML fields: `recipient` (name, title, institution, address lines), `date`, `salutation`, `closing`, `signature` (name, title), `contact`, `paper`. (`to` and `from` are reserved by Quarto, so the memo uses `recipient` and `sender`.)
 
 ## Build order
 
@@ -95,8 +96,10 @@ Quarto applies `_brand.yml` to HTML, reveal.js, dashboards and Typst automatical
 - Marks are image files, never redrawn in Typst or CSS; the wordmark in HTML and slides may be live type, as on tunedecho.com.
 - Key colors are for the strip, markers and chart series in strip order, never for text or backgrounds.
 
-## Open questions
+## Decisions made while building (2026-10-13)
 
-- Which mono font for code blocks.
-- Whether the report format needs a table of contents by default.
-- Whether to ship the fonts in the repo (license allows it; adds about 1 MB).
+- Code blocks use the system monospace stack (Menlo, DejaVu Sans Mono). Nothing extra shipped.
+- The report has no table of contents by default; `toc: true` adds one after the cover.
+- The three fonts ship in `_extensions/tunedecho/fonts/` (about 700 KB) with their OFL files. Typst finds them through `_brand.yml`, so a project must set `brand: _extensions/tunedecho/_brand.yml`.
+- HTML and slides place the marks as CSS data URIs generated from the PNGs, so they never depend on file paths at render time.
+- The design system folder stays named `tuned-echo-design-system/`.

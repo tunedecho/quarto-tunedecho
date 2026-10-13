@@ -1,0 +1,41 @@
+/* Tuned Echo components. Load after tokens.css and the Google Fonts link:
+   https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Oswald:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap */
+
+.te-wordmark{display:inline-flex;flex-direction:column;gap:.45em;color:var(--ink);text-decoration:none}
+.te-wordmark .wm-text{font-family:var(--font-serif);line-height:.95;letter-spacing:-.015em}
+.te-wordmark em{font-style:italic}
+
+.te-bars{display:flex;gap:.5rem}
+.te-bars i{flex:1;height:var(--bar-height);border-radius:var(--radius-pill);background:var(--key-ink)}
+.te-rule{display:flex;gap:.4rem;height:4px}
+.te-rule i{flex:1;border-radius:var(--radius-pill);background:var(--key-ink)}
+.te-bars i:nth-child(1),.te-rule i:nth-child(1){background:var(--key-pink)}
+.te-bars i:nth-child(2),.te-rule i:nth-child(2){background:var(--key-orange)}
+.te-bars i:nth-child(3),.te-rule i:nth-child(3){background:var(--key-yellow)}
+.te-bars i:nth-child(4),.te-rule i:nth-child(4){background:var(--key-green)}
+.te-bars i:nth-child(5),.te-rule i:nth-child(5){background:var(--key-blue)}
+.te-bars i:nth-child(6),.te-rule i:nth-child(6){background:var(--key-purple)}
+
+.te-btn{display:inline-block;padding:.8rem 1.4rem;border-radius:var(--radius-pill);font-family:var(--font-sans);font-weight:600;font-size:.95rem;line-height:1.2;text-decoration:none;border:var(--stroke-rule) solid var(--ink);cursor:pointer}
+.te-btn.primary{background:var(--ink);color:var(--on-ink)}
+.te-btn.primary:hover{opacity:.9}
+.te-btn.ghost{background:transparent;color:var(--ink)}
+.te-btn.ghost:hover{background:var(--paper)}
+.te-btn:focus-visible,.te-link:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+
+.te-eyebrow{font-family:var(--font-cond);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 1rem}
+
+.te-step{border-top:var(--stroke-rule) solid var(--rule);padding-top:1.25rem;min-width:0}
+.te-step h3{font-family:var(--font-serif);font-weight:400;font-size:1.6rem;line-height:1.1;color:var(--ink);margin:0}
+.te-step .dot{display:inline-block;width:.75rem;height:.75rem;border-radius:var(--radius-dot);margin-right:.5rem}
+.te-step p{margin:.6rem 0 0;color:var(--muted);font-family:var(--font-sans);font-size:1rem;line-height:1.6}
+
+.te-principle{display:grid;grid-template-columns:auto 1fr;gap:.75rem;align-items:start;font-family:var(--font-sans);font-size:1rem;line-height:1.6;color:var(--muted)}
+.te-principle i{display:block;width:.5rem;height:1.25rem;border-radius:var(--radius-pill);margin-top:.15rem}
+.te-principle strong{display:block;font-family:var(--font-serif);font-size:1.35rem;font-weight:400;color:var(--ink);line-height:1.15}
+
+.te-notice{border:var(--stroke-rule) dashed var(--rule);background:var(--paper);border-radius:var(--radius-0);padding:1.5rem 1.75rem;max-width:var(--measure);display:grid;gap:.5rem;font-family:var(--font-sans);line-height:1.6}
+.te-notice .label{font-family:var(--font-cond);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
+.te-notice p{margin:0;color:var(--muted)}
+
+.te-banner{background:var(--ink);color:var(--on-ink);font-family:var(--font-cond);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:.55rem 1rem}

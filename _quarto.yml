@@ -1,0 +1,7 @@
+project:
+  type: default
+  render:
+    - templates/*.qmd
+    - tests/*.qmd
+  output-dir: _output
+brand: _extensions/tunedecho/_brand.yml

@@ -1,0 +1,45 @@
+title: Tuned Echo
+author: Tuned Echo Systems LLC
+version: 0.1.0
+quarto-required: ">=1.6.0"
+contributes:
+  formats:
+    html:
+      theme:
+        - html/tunedecho.scss
+      css:
+        - html/tokens.css
+        - html/components.css
+      mainfont: Plus Jakarta Sans
+      date-format: long
+      toc: true
+      toc-location: right
+      toc-depth: 2
+      fig-width: 8
+      fig-height: 4.5
+      link-external-newwindow: true
+      include-in-header:
+        - html/fonts.html
+    revealjs:
+      theme:
+        - default
+        - html/revealjs.scss
+      css:
+        - html/tokens.css
+        - html/components.css
+      template-partials:
+        - html/title-slide.html
+      include-in-header:
+        - html/fonts.html
+      date-format: long
+      width: 1280
+      height: 720
+      margin: 0.08
+      center: false
+      slide-number: c
+      transition: none
+      background-transition: none
+      hash: true
+      logo: false
+      fig-width: 9
+      fig-height: 4.8

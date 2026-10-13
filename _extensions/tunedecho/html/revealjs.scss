@@ -1,0 +1,142 @@
+/*-- scss:uses --*/
+@import "_tokens";
+@import "_assets";
+
+/*-- scss:functions --*/
+@import "_marks";
+
+/*-- scss:defaults --*/
+$body-bg: $te-bg;
+$body-color: $te-text;
+$link-color: $te-ink;
+$link-color-hover: $te-ink;
+$selection-bg: $te-ink;
+$selection-color: $te-on-ink;
+
+$font-family-sans-serif: $te-font-sans;
+$font-family-monospace: $te-font-mono;
+$presentation-font-size-root: 34px;
+$presentation-line-height: 1.5;
+$presentation-heading-font: $te-font-serif;
+$presentation-heading-color: $te-ink;
+$presentation-heading-font-weight: 400;
+$presentation-heading-line-height: 1.05;
+$presentation-heading-letter-spacing: normal;
+$presentation-heading-text-transform: none;
+$presentation-h1-font-size: 2.4em;
+$presentation-h2-font-size: 1.7em;
+$presentation-h3-font-size: 1.2em;
+$presentation-block-margin: 16px;
+$presentation-title-slide-text-align: left;
+
+$code-color: $te-ink;
+
+/*-- scss:rules --*/
+// The key band along the foot of every slide, full bleed.
+.reveal::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 8px;
+  background: te-band-svg() no-repeat center / 100% 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+.reveal .progress { height: 3px; background: $te-rule-soft; }
+.reveal .progress span { background: $te-ink; }
+.reveal .slide-number {
+  font-family: $te-font-sans;
+  font-size: 0.5em;
+  color: $te-muted;
+  background: transparent;
+}
+.reveal .footer { color: $te-muted; font-size: 0.5em; }
+
+// Title slide: wordmark first, then the title as one sentence.
+.reveal #title-slide .te-title-mark {
+  width: 11em;
+  aspect-ratio: 1052 / 289;
+  background: $te-wordmark-data left center / contain no-repeat;
+  margin: 0 0 1.2em;
+}
+.reveal #title-slide .title {
+  font-size: 2.4em;
+  margin: 0 0 0.3em;
+  text-wrap: balance;
+}
+.reveal #title-slide .subtitle {
+  font-family: $te-font-sans;
+  font-size: 0.9em;
+  color: $te-muted;
+  margin: 0 0 1.4em;
+}
+.reveal #title-slide .author,
+.reveal #title-slide .institute,
+.reveal #title-slide .date {
+  font-size: 0.6em;
+  color: $te-muted;
+  margin: 0;
+}
+
+// Section slides (level-one headings): a short key strip, then the heading.
+.reveal .slide.level1 > h1 {
+  margin-top: 2.6em;
+  padding-top: 0.6em;
+  background: te-rule-svg() no-repeat left top / 7em 4px;
+  text-wrap: balance;
+}
+
+// Content slides
+.reveal h2 {
+  border-bottom: 1.5px solid $te-rule;
+  padding-bottom: 0.25em;
+  margin-bottom: 0.7em;
+  text-wrap: balance;
+}
+.reveal h3 { color: $te-ink; }
+.reveal p, .reveal li { max-width: 24em; }
+.reveal ul, .reveal ol { margin-left: 1em; }
+.reveal li { margin-bottom: 0.3em; }
+.reveal strong { font-weight: 600; color: $te-ink; }
+.reveal a { text-decoration: underline; text-decoration-color: $te-rule; text-underline-offset: 0.12em; }
+.reveal a:hover { text-decoration-color: $te-ink; }
+.reveal a:focus-visible, .reveal button:focus-visible { outline: 2px solid $te-focus; outline-offset: 3px; }
+
+.reveal blockquote {
+  border-left: 1.5px solid $te-rule;
+  background: transparent;
+  box-shadow: none;
+  color: $te-muted;
+  font-style: normal;
+  padding: 0 0 0 0.8em;
+  margin-left: 0;
+}
+.reveal pre { box-shadow: none; border: 1.5px solid $te-rule-soft; border-radius: 0; }
+.reveal code { border-radius: 0; }
+.reveal table { font-size: 0.8em; }
+.reveal table th { border-bottom: 1.5px solid $te-ink; font-weight: 600; color: $te-ink; }
+.reveal table td { border-bottom: 1px solid $te-rule-soft; }
+.reveal .callout { border-radius: 0; }
+
+// The eyebrow class works on slides too.
+.reveal .te-eyebrow { font-size: 0.5em; margin-bottom: 0.8em; }
+
+// Closing slide: the seal, centered, then a short statement.
+.reveal section.te-closing {
+  text-align: center;
+}
+// reveal.js copies slide classes onto .slide-background, so target the section only.
+.reveal section.te-closing::before {
+  content: "";
+  display: block;
+  width: 4.5em;
+  aspect-ratio: 1;
+  margin: 1.2em auto 0.8em;
+  background: $te-seal-data center / contain no-repeat;
+}
+.reveal section.te-closing h2 {
+  border-bottom: 0;
+  font-size: 1.9em;
+  margin-bottom: 0.4em;
+}
+.reveal section.te-closing p { margin: 0.2em auto; max-width: none; color: $te-muted; }

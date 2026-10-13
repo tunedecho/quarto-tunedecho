@@ -1,0 +1,199 @@
+/*-- scss:uses --*/
+@import "_tokens";
+@import "_assets";
+
+/*-- scss:functions --*/
+@import "_marks";
+
+/*-- scss:defaults --*/
+// Type
+$font-family-sans-serif: $te-font-sans;
+$font-family-monospace: $te-font-mono;
+$font-size-root: 17px;
+$line-height-base: 1.6;
+$headings-font-family: $te-font-serif;
+$headings-font-weight: 400;
+$headings-color: $te-ink;
+$headings-line-height: 1.1;
+$h1-font-size: 2.8rem;
+$h2-font-size: 2rem;
+$h3-font-size: 1.65rem;
+$h4-font-size: 1.25rem;
+$h5-font-size: 1.1rem;
+
+// Color
+$body-bg: $te-bg;
+$body-color: $te-text;
+$link-color: $te-ink;
+$link-hover-color: $te-ink;
+$link-decoration: underline;
+$border-color: $te-rule-soft;
+$primary: $te-ink;
+$secondary: $te-muted;
+
+// Shape: square panels, pill buttons
+$border-radius: 0;
+$border-radius-sm: 0;
+$border-radius-lg: 0;
+$btn-border-radius: 999px;
+$btn-font-weight: 600;
+
+// Code
+$code-color: $te-ink;
+$code-bg: $te-paper;
+$code-block-border-left: false;
+$code-block-bg-padding: 1rem;
+
+// Tables and TOC
+$table-border-color: $te-rule-soft;
+$toc-font-size: 0.9rem;
+
+// Callouts
+$callout-border-width: 1.5px;
+
+/*-- scss:rules --*/
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+// Running text stays within measure.
+main p, main li, main blockquote, main dd {
+  max-width: $te-measure;
+}
+main .cell-output p, main table p { max-width: none; }
+
+// Title block: the wordmark leads, then the title as one sentence.
+#title-block-header.quarto-title-block::before {
+  content: "";
+  display: block;
+  width: 11rem;
+  aspect-ratio: 1052 / 289;
+  background: $te-wordmark-data center / contain no-repeat;
+  margin-bottom: 2.5rem;
+}
+#title-block-header .title {
+  font-size: $h1-font-size;
+  line-height: 1.05;
+  text-wrap: balance;
+  margin-bottom: 0.5rem;
+}
+#title-block-header .subtitle {
+  font-family: $te-font-sans;
+  font-size: 1.2rem;
+  color: $te-muted;
+  margin-top: 0;
+  max-width: $te-measure;
+}
+.quarto-title-meta-heading {
+  font-family: $te-font-cond;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $te-muted;
+  font-weight: 400;
+}
+.quarto-title-meta-contents, .quarto-title-meta-contents a {
+  color: $te-muted;
+  text-decoration: none;
+}
+.quarto-title-block .quarto-title-meta {
+  padding-top: 1.25rem;
+  border-top: 1.5px solid $te-rule;
+}
+
+// Sections: the key rule above a major heading, a plain rule above a subsection.
+main h1:not(.title) {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  background: te-rule-svg() no-repeat left top / 100% 4px;
+}
+main h2 {
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+  padding-bottom: 0;
+  border-top: 1.5px solid $te-rule;
+  border-bottom: 0;
+}
+main h3 { margin-top: 2rem; }
+h1, h2, h3, h4 { text-wrap: balance; }
+h1 em, h2 em, h3 em { font-style: italic; }
+
+// A horizontal rule in markdown becomes the key rule.
+main hr {
+  border: 0;
+  opacity: 1;
+  height: 4px;
+  margin: 3rem 0;
+  background: te-rule-svg() no-repeat left top / 100% 4px;
+}
+
+// Links, focus
+a { text-decoration-color: $te-rule; text-underline-offset: 0.15em; }
+a:hover { text-decoration-color: $te-ink; }
+a:focus-visible, button:focus-visible, .btn:focus-visible {
+  outline: 2px solid $te-focus;
+  outline-offset: 3px;
+}
+
+// Code
+code { border-radius: 0; }
+div.sourceCode, pre.sourceCode, pre {
+  border: 1.5px solid $te-rule-soft;
+  border-radius: 0;
+  background: $te-paper;
+}
+
+// Tables
+.table, table {
+  caption-side: top;
+  text-align: left;
+  th, td { text-align: left; }
+  thead th {
+    border-bottom: 1.5px solid $te-ink;
+    border-top: 0;
+    color: $te-ink;
+    font-weight: 600;
+  }
+  td { border-bottom: 1px solid $te-rule-soft; }
+  caption { color: $te-muted; font-size: 0.9rem; padding-left: 0; text-align: left; }
+}
+figcaption, .figure-caption, .table-caption { color: $te-muted; font-size: 0.9rem; }
+
+// Quotes and callouts
+blockquote {
+  border-left: 1.5px solid $te-rule;
+  padding-left: 1rem;
+  color: $te-muted;
+}
+.callout.callout-style-default, .callout.callout-style-simple {
+  border-radius: 0;
+  border-left: 1.5px solid $te-rule;
+  border-top: 0; border-right: 0; border-bottom: 0;
+  background: $te-paper;
+  .callout-header { background: $te-paper; font-weight: 600; color: $te-ink; }
+}
+
+// Buttons
+.btn { font-family: $te-font-sans; border-width: 1.5px; }
+.btn-primary { background: $te-ink; border-color: $te-ink; color: $te-on-ink; }
+.btn-outline-primary { border-color: $te-ink; color: $te-ink; }
+.btn-outline-primary:hover { background: $te-paper; color: $te-ink; }
+
+// Table of contents
+.sidebar nav[role="doc-toc"] > h2, #TOC > h2, .sidebar nav[role="doc-toc"] > .toc-title {
+  font-family: $te-font-cond;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $te-muted;
+  font-weight: 400;
+}
+.sidebar nav[role="doc-toc"] ul > li > a { border-left-color: $te-rule; color: $te-muted; }
+.sidebar nav[role="doc-toc"] ul > li > a.active { color: $te-ink; border-left-color: $te-ink; }
+
+// Footer
+.nav-footer { color: $te-muted; font-size: 0.85rem; }
+
+@media print {
+  body { background: $te-paper-print; }
+}

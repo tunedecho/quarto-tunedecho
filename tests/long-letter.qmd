@@ -1,0 +1,43 @@
+---
+format: tunedecho-letter-typst
+date: today
+recipient:
+  name: Dr. Jane Example
+  title: Dean of Libraries
+  institution: Example University
+  address:
+    - 100 College Avenue
+    - Anytown, NY 10000
+signature:
+  name: Matt Crump
+  title: Founder, Tuned Echo Systems LLC
+paper: cream
+---
+
+A two-page letter on cream stock, to check the running head and the footer on continuation pages.
+
+We propose a four-week engagement in our usual four movements. We listen to the people who use each system and write down what they actually do. We trace every record type back to its source of truth. We tune a single working prototype that reads from all three and shows the conflicts side by side. Then we hand it over and make sure it echoes in your own workflow, with documentation your staff can maintain.
+
+We propose a four-week engagement in our usual four movements. We listen to the people who use each system and write down what they actually do. We trace every record type back to its source of truth. We tune a single working prototype that reads from all three and shows the conflicts side by side. Then we hand it over and make sure it echoes in your own workflow, with documentation your staff can maintain.
+
+We propose a four-week engagement in our usual four movements. We listen to the people who use each system and write down what they actually do. We trace every record type back to its source of truth. We tune a single working prototype that reads from all three and shows the conflicts side by side. Then we hand it over and make sure it echoes in your own workflow, with documentation your staff can maintain.
+
+We propose a four-week engagement in our usual four movements. We listen to the people who use each system and write down what they actually do. We trace every record type back to its source of truth. We tune a single working prototype that reads from all three and shows the conflicts side by side. Then we hand it over and make sure it echoes in your own workflow, with documentation your staff can maintain.
+
+We propose a four-week engagement in our usual four movements. We listen to the people who use each system and write down what they actually do. We trace every record type back to its source of truth. We tune a single working prototype that reads from all three and shows the conflicts side by side. Then we hand it over and make sure it echoes in your own workflow, with documentation your staff can maintain.
+
+We propose a four-week engagement in our usual four movements. We listen to the people who use each system and write down what they actually do. We trace every record type back to its source of truth. We tune a single working prototype that reads from all three and shows the conflicts side by side. Then we hand it over and make sure it echoes in your own workflow, with documentation your staff can maintain.
+
+We propose a four-week engagement in our usual four movements. We listen to the people who use each system and write down what they actually do. We trace every record type back to its source of truth. We tune a single working prototype that reads from all three and shows the conflicts side by side. Then we hand it over and make sure it echoes in your own workflow, with documentation your staff can maintain.
+
+We propose a four-week engagement in our usual four movements. We listen to the people who use each system and write down what they actually do. We trace every record type back to its source of truth. We tune a single working prototype that reads from all three and shows the conflicts side by side. Then we hand it over and make sure it echoes in your own workflow, with documentation your staff can maintain.
+
+We propose a four-week engagement in our usual four movements. We listen to the people who use each system and write down what they actually do. We trace every record type back to its source of truth. We tune a single working prototype that reads from all three and shows the conflicts side by side. Then we hand it over and make sure it echoes in your own workflow, with documentation your staff can maintain.
+
+
+## A heading inside a letter
+
+Headings are rare in letters, but when they appear they use the serif and a rule.
+
+- A list item.
+- Another, with `inline code`.

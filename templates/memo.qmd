@@ -1,0 +1,25 @@
+---
+format: tunedecho-memo-typst
+title: Catalog migration, week two
+date: today
+recipient:
+  - Cataloging team
+  - Dr. Jane Example
+sender: Matt Crump
+cc: Library IT
+paper: white
+---
+
+## Where we are
+
+We finished the listening sessions on Tuesday. Twelve people, four departments, one shared complaint: nobody trusts the holdings count.
+
+## What we found
+
+- The ILS and the digital repository disagree on 1,840 records.
+- Most conflicts are date fields, not titles.
+- The spreadsheet in Special Collections is the only source for 212 items.
+
+## Next week
+
+We trace each conflict to the system that last wrote it, then build the first prototype view. Expect a working link on Friday.

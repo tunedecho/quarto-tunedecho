@@ -1,0 +1,25 @@
+<!-- @dsCard group="Print" height=520 width=420 subtitle="US Letter first page, scaled" -->
+<!doctype html>
+<html><head><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap">
+<style>
+body{margin:0;background:var(--bg);padding:16px 24px}
+.sheet{width:340px;height:440px;background:var(--paper-print);box-shadow:0 0 0 1px var(--rule);display:flex;flex-direction:column;font-family:var(--font-sans);color:#2b2f36;position:relative;overflow:hidden}
+.hd{display:flex;justify-content:space-between;padding:26px 30px 0}
+.hd img{width:104px;height:auto;display:block}
+.addr{font-size:5px;line-height:1.5;color:#53575d;text-align:right}
+.addr b{color:#1f2329;font-weight:600}
+.body{flex:1;padding:24px 30px 0;font-size:6.3px;line-height:1.6;display:grid;align-content:start;gap:9px}
+.ft{display:flex;align-items:center;gap:8px;padding:0 30px 14px}
+.ft img{width:26px;height:26px}
+.ft div{flex:1;border-top:1px solid #d9d6ce;padding-top:4px;font-size:5px;color:#53575d;display:flex;justify-content:space-between}
+.band{height:3px;background:url(../../assets/Graphics/key-band.png) 0 0/100% 100%}
+</style></head>
+<body>
+<div class="sheet" role="img" aria-label="Letterhead first page">
+  <div class="hd"><img src="../../assets/Logos/wordmark-motto.png" alt=""><div class="addr"><b>Tuned Echo Systems LLC</b><br>[Street address]<br>Brooklyn, NY [ZIP]<br>[email@tunedecho.com]<br>tunedecho.com</div></div>
+  <div class="body"><div>[Month Day, Year]</div><div>[Recipient Name]<br>[Institution]</div><div>Dear [Recipient Name],</div><div>[Opening paragraph.]</div><div>[Body paragraph.]</div><div>Sincerely,</div></div>
+  <div class="ft"><img src="../../assets/Logos/seal.png" alt=""><div><span>Mission-built software for higher education and publishing</span><span>Brooklyn, NY</span></div></div>
+  <div class="band"></div>
+</div>
+<script></script>
+</body></html>

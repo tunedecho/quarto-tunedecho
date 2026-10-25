@@ -54,6 +54,18 @@ typography:
         - path: fonts/InstrumentSerif-Italic.ttf
           weight: 400
           style: italic
+    - family: Newsreader
+      source: file
+      files:
+        - path: fonts/Newsreader-Regular.ttf
+          weight: 400
+          style: normal
+        - path: fonts/Newsreader-Italic.ttf
+          weight: 400
+          style: italic
+        - path: fonts/Newsreader-SemiBold.ttf
+          weight: 600
+          style: normal
     - family: Plus Jakarta Sans
       source: file
       files:
@@ -75,6 +87,18 @@ typography:
         - path: fonts/PlusJakartaSans-SemiBoldItalic.ttf
           weight: 600
           style: italic
+    - family: Figtree
+      source: file
+      files:
+        - path: fonts/Figtree-Regular.ttf
+          weight: 400
+          style: normal
+        - path: fonts/Figtree-Italic.ttf
+          weight: 400
+          style: italic
+        - path: fonts/Figtree-SemiBold.ttf
+          weight: 600
+          style: normal
     - family: Oswald
       source: file
       files:
@@ -85,8 +109,8 @@ typography:
           weight: 500
           style: normal
   base:
-    family: Plus Jakarta Sans
-    line-height: 1.6
+    family: Newsreader
+    line-height: 1.5
   headings:
     family: Instrument Serif
     weight: 400

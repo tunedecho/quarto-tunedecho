@@ -43,6 +43,15 @@ $tokens.typ()$
 
 #let te-hairline(c) = line(length: 100%, stroke: 0.75pt + c.at("rule"))
 
+// Page width between the 0.75in print margins on US Letter.
+#let te-full-width = 7in
+
+// The text column is narrower than the page furniture. The page's right margin
+// absorbs the difference; te-wide lets headers, footers and the letterhead run
+// back out to the full width.
+#let te-extra(body-width) = calc.max(0pt, te-full-width - body-width)
+#let te-wide(body-width, body) = pad(right: -te-extra(body-width), body)
+
 // Running head on continuation pages: small wordmark left, a line of text right.
 #let te-running-head(c, right-text) = {
   grid(
@@ -81,19 +90,30 @@ $tokens.typ()$
 // Base document styles shared by every print format.
 #let te-base(
   c,
-  fontsize: 11pt,
+  font: none,
+  heading-font: none,
+  heading-weight: auto,
+  fontsize: 12pt,
+  leading: 0.7em,
+  par-spacing: 1.35em,
+  tracking: 0pt,
   sectionnumbering: none,
-  heading-sizes: (20pt, 14.5pt, 11.5pt),
+  heading-sizes: (16pt, 13.5pt, 12pt),
   section-rules: true,
   doc,
 ) = {
-  set text(font: te-fonts.sans, size: fontsize, fill: c.at("text"), lang: "en", region: "US")
-  set par(justify: false, leading: 0.72em, spacing: 1.1em)
+  let body-font = if font == none { te-fonts.body } else { font }
+  set text(font: body-font, size: fontsize, fill: c.at("text"), tracking: tracking, lang: "en", region: "US")
+  set par(justify: false, leading: leading, spacing: par-spacing)
   set heading(numbering: sectionnumbering)
 
-  // Headings: Instrument Serif, regular weight, ink.
-  show heading: set text(font: te-fonts.serif, weight: 400, fill: c.at("ink"))
-  show heading: set block(above: 1.5em, below: 0.7em)
+  // Section headings: the heading sans at regular weight, ink. Size and the change
+  // of face mark the heading; if body and headings share a face, semibold does.
+  // Instrument Serif is a condensed display face, kept for titles only.
+  let head-font = if heading-font == none { te-fonts.heading } else { heading-font }
+  let head-weight = if heading-weight != auto { heading-weight } else if head-font == body-font { 600 } else { 400 }
+  show heading: set text(font: head-font, weight: head-weight, fill: c.at("ink"))
+  show heading: set block(above: 1.6em, below: 0.8em)
   show heading.where(level: 1): set text(size: heading-sizes.at(0))
   show heading.where(level: 2): set text(size: heading-sizes.at(1))
   show heading.where(level: 3): set text(size: heading-sizes.at(2))
@@ -131,10 +151,12 @@ $tokens.typ()$
     ),
   )
   show table.cell.where(y: 0): set text(weight: 600, fill: c.at("ink"))
+  // Keep a table whole on one page rather than splitting it after a row or two.
+  show table: it => block(breakable: false, it)
 
   // Figures and tables sit on the left edge of the column, as the text does.
   show figure: set align(left)
-  show figure.caption: set text(size: 9pt, fill: c.at("muted"))
+  show figure.caption: set text(font: te-fonts.sans, size: 9pt, fill: c.at("muted"))
   show figure.caption: set align(left)
   show figure.where(kind: table): set figure.caption(position: top)
   show figure.where(kind: table): set figure(supplement: [Table])

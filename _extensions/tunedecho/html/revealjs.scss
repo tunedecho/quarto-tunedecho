@@ -1,11 +1,8 @@
-/*-- scss:uses --*/
-@import "_tokens";
-@import "_assets";
-
 /*-- scss:functions --*/
 @import "_marks";
 
 /*-- scss:defaults --*/
+@import "_assets";
 $body-bg: $te-bg;
 $body-color: $te-text;
 $link-color: $te-ink;
@@ -13,10 +10,11 @@ $link-color-hover: $te-ink;
 $selection-bg: $te-ink;
 $selection-color: $te-on-ink;
 
-$font-family-sans-serif: $te-font-sans;
+// Running text is the body serif; the sans is kept for small labels.
+$font-family-sans-serif: $te-font-body;
 $font-family-monospace: $te-font-mono;
-$presentation-font-size-root: 34px;
-$presentation-line-height: 1.5;
+$presentation-font-size-root: 38px;
+$presentation-line-height: 1.4;
 $presentation-heading-font: $te-font-serif;
 $presentation-heading-color: $te-ink;
 $presentation-heading-font-weight: 400;
@@ -73,7 +71,8 @@ $code-color: $te-ink;
 .reveal #title-slide .author,
 .reveal #title-slide .institute,
 .reveal #title-slide .date {
-  font-size: 0.6em;
+  font-family: $te-font-sans;
+  font-size: 0.55em;
   color: $te-muted;
   margin: 0;
 }
@@ -113,7 +112,7 @@ $code-color: $te-ink;
 }
 .reveal pre { box-shadow: none; border: 1.5px solid $te-rule-soft; border-radius: 0; }
 .reveal code { border-radius: 0; }
-.reveal table { font-size: 0.8em; }
+.reveal table { font-size: 0.85em; }
 .reveal table th { border-bottom: 1.5px solid $te-ink; font-weight: 600; color: $te-ink; }
 .reveal table td { border-bottom: 1px solid $te-rule-soft; }
 .reveal .callout { border-radius: 0; }

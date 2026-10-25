@@ -9,3 +9,4 @@ templates/*_files/
 .DS_Store
 
 **/*.quarto_ipynb
+dist/

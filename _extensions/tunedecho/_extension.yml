@@ -7,10 +7,10 @@ contributes:
     html:
       theme:
         - html/tunedecho.scss
+        - html/tokens.scss
       css:
         - html/tokens.css
         - html/components.css
-      mainfont: Plus Jakarta Sans
       date-format: long
       toc: true
       toc-location: right
@@ -24,6 +24,7 @@ contributes:
       theme:
         - default
         - html/revealjs.scss
+        - html/tokens.scss
       css:
         - html/tokens.css
         - html/components.css

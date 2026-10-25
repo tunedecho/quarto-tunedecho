@@ -1,0 +1,19 @@
+---
+format: tunedecho-letter-typst
+date: today
+recipient:
+  name: Dr. Jane Example
+  institution: Example University
+signature:
+  name: Matt Crump
+  title: Founder, Tuned Echo Systems LLC
+mainfont: Figtree
+fontsize: 11pt
+leading: 0.75em
+---
+
+This letter checks the sans alternative. Set `mainfont: Figtree` with `fontsize: 11pt` and `leading: 0.75em` to use it in place of the default serif.
+
+We propose a four-week engagement in our usual four movements. We listen to the people who use each system and write down what they actually do. We trace every record type back to its source of truth.
+
+A short statement of work is attached. If the scope changes as we learn more, we will say so before the work does.

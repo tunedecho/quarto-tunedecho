@@ -5,7 +5,7 @@ A Quarto extension that turns markdown (with embedded R or Python) into Tuned Ec
 ## Goals
 
 - Write in markdown, embed code when useful, render to the document type of choice.
-- Every output uses the Tuned Echo design system: Instrument Serif for display, Plus Jakarta Sans for text, Oswald for labels, cream or white paper, ink text, the seven-bar key strip as the only ornament.
+- Every output uses the Tuned Echo design system: Instrument Serif for display, Newsreader for running text (see Type decisions), Plus Jakarta Sans for small text, Oswald for labels, cream or white paper, ink text, the seven-bar key strip as the only ornament.
 - Print formats go through Typst, not LaTeX. Screen formats go through HTML and reveal.js.
 - Brand values live in one place and are copied from the design system's `tokens.json`, never retyped by hand.
 
@@ -28,7 +28,7 @@ quarto-tunedecho/
       html/
         tunedecho.scss        HTML theme
         revealjs.scss         slides theme
-        _tokens.scss          generated SCSS variables
+        tokens.scss          generated SCSS variables
         _assets.scss          generated data URIs for the marks
         _marks.scss           key strip as SVG
         tokens.css, components.css   copied from the design system
@@ -75,7 +75,7 @@ Quarto applies `_brand.yml` to HTML, reveal.js, dashboards and Typst automatical
 - Footer: `seal.png` at 0.65in, rule line, "Mission-built software for higher education and publishing" and "Brooklyn, NY".
 - Bottom edge: full-bleed key band, 8px tall, square ends, on every page.
 - Continuation pages: small `wordmark.png`, running head with recipient, date and page number.
-- Body 11pt Plus Jakarta Sans, 1.6 line height.
+- Body 12pt Newsreader in a 6.25in column (see Type decisions).
 - YAML fields: `recipient` (name, title, institution, address lines), `date`, `salutation`, `closing`, `signature` (name, title), `contact`, `paper`. (`to` and `from` are reserved by Quarto, so the memo uses `recipient` and `sender`.)
 
 ## Build order
@@ -103,3 +103,12 @@ Quarto applies `_brand.yml` to HTML, reveal.js, dashboards and Typst automatical
 - The three fonts ship in `_extensions/tunedecho/fonts/` (about 700 KB) with their OFL files. Typst finds them through `_brand.yml`, so a project must set `brand: _extensions/tunedecho/_brand.yml`.
 - HTML and slides place the marks as CSS data URIs generated from the PNGs, so they never depend on file paths at render time.
 - The design system folder stays named `tuned-echo-design-system/`.
+
+## Type decisions (2026-10-13)
+
+After comparing twelve letter settings, Matt chose Newsreader for running text.
+
+- Body text in every format is Newsreader, 12pt in print, with 1.35em between paragraphs and a 6.25in text column. The page furniture (letterhead, running heads, footers) still spans the full 7in.
+- Section headings in documents are Figtree at regular weight. Instrument Serif is condensed and looked too tall at heading sizes, so it is kept for titles only (report cover, HTML page title, slides). Newsreader semibold and heavier sans weights were tried and rejected as too bold. Plus Jakarta Sans is now only for small text: contact block, running heads, footers, captions, the HTML contents list. Oswald is unchanged.
+- Figtree ships as the sans alternative: `mainfont: Figtree`, `fontsize: 11pt`, `leading: 0.75em`.
+- These choices sit on top of the design system, whose `tokens.json` still names Plus Jakarta Sans as the text face. They are recorded as `BODY_FAMILY` and `ALT_FAMILY` at the top of `tools/brand-from-tokens.py`. If the design system adopts Newsreader, move them into `tokens.json` and drop the constants.

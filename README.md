@@ -12,7 +12,7 @@ Quarto formats that turn markdown, with embedded R or Python when you want it, i
 
 ## Install
 
-Quarto 1.6 or later. The three brand fonts ship inside the extension, so nothing needs installing.
+Quarto 1.6 or later. All fonts ship inside the extension, so nothing needs installing.
 
 ```bash
 quarto add tunedecho/quarto-tunedecho
@@ -98,7 +98,7 @@ toc: false
 ---
 ```
 
-The cover shows the wordmark with motto, the `doc-type` eyebrow, the title, and "Prepared for / Prepared by / Date" blocks, with the seal at the foot. Sections are numbered by default (`number-sections: false` turns it off). `toc: true` adds a contents page after the cover. Tables, figures, cross-references and callouts work as in any Quarto document.
+Use `date-text: "[Date]"` in place of `date` for a placeholder or any wording Quarto should not parse as a date. The cover shows the wordmark with motto, the `doc-type` eyebrow, the title, and "Prepared for / Prepared by / Date" blocks, with the seal at the foot. Sections are numbered by default (`number-sections: false` turns it off). `toc: true` adds a contents page after the cover. Tables, figures, cross-references and callouts work as in any Quarto document.
 
 ## HTML and slides
 
@@ -120,7 +120,7 @@ Never retype a color or a font name. Edit `tuned-echo-design-system/tokens.json`
 python3 tools/brand-from-tokens.py
 ```
 
-The script writes `_brand.yml`, the Typst constants (`typst/tokens.typ`), the SCSS variables (`html/_tokens.scss`), the marks as CSS data URIs (`html/_assets.scss`), and copies `tokens.css` and the component CSS into the extension.
+The script writes `_brand.yml`, the Typst constants (`typst/tokens.typ`), the SCSS variables (`html/tokens.scss`), the marks as CSS data URIs (`html/_assets.scss`), and copies `tokens.css` and the component CSS into the extension.
 
 ## Repository layout
 
@@ -131,13 +131,39 @@ _extensions/
   tunedecho-memo/       memo format
   tunedecho-report/     report format
 templates/              starter documents, one per format
-tests/                  render checks (a two-page letter on cream)
+tests/                  render checks (a two-page letter on cream, a Figtree letter)
 tools/brand-from-tokens.py
 tuned-echo-design-system/   the exported design system (source of truth)
 ```
 
 Render everything in this repository with `quarto render`; outputs land in `_output/`.
 
+## Type
+
+Running text is set in **Newsreader**, a clean text serif, at 12pt in print with open paragraph spacing and a 6.25in text column (about 75 characters a line). Section headings use Figtree at regular weight. Instrument Serif, the wordmark's face, is kept for titles: the report cover, the web page title and slides. Plus Jakarta Sans is kept for small text only: the contact block, running heads, footers and captions. Oswald is for uppercase labels.
+
+**Figtree** is also the sans alternative for body text (headings then switch to semibold so they still stand out). Choose it per document, or in `_quarto.yml` for a whole project:
+
+```yaml
+mainfont: Figtree
+fontsize: 11pt
+leading: 0.75em
+```
+
+The print formats (letter, memo, report) accept these options:
+
+| Option | Default | Meaning |
+|---|---|---|
+| `mainfont` | Newsreader | Body typeface. `Figtree` and `Plus Jakarta Sans` are also shipped. |
+| `headingfont` | Figtree | Section heading typeface. |
+| `headingweight` | `400` | Heading weight. `600` when body and headings share a face. |
+| `fontsize` | `12pt` | Body size. Use `11pt` with Figtree. |
+| `leading` | `0.7em` | Space between lines. |
+| `par-spacing` | `1.35em` | Space between paragraphs. |
+| `body-width` | `6.25in` | Width of the text column. `7in` fills the page between the margins. |
+
+HTML and slides use Newsreader for running text as well, loaded from Google Fonts.
+
 ## Fonts
 
-Instrument Serif, Plus Jakarta Sans and Oswald are included under `_extensions/tunedecho/fonts/` with their SIL Open Font License files. Typst finds them through the brand file. HTML and slides load the same families from Google Fonts. Code uses the system monospace (Menlo, DejaVu Sans Mono).
+Newsreader, Figtree, Instrument Serif, Plus Jakarta Sans and Oswald are included under `_extensions/tunedecho/fonts/` with their SIL Open Font License files. Typst finds them through the brand file. HTML and slides load the same families from Google Fonts. Code uses the system monospace (Menlo, DejaVu Sans Mono).

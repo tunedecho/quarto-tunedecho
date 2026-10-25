@@ -1,5 +1,5 @@
 // Shared helpers for the HTML and reveal.js themes: the key strip as inline SVG
-// so it can be a background anywhere. Colors come from _tokens.scss.
+// so it can be a background anywhere. Colors come from tokens.scss.
 
 @function te-hex($c) {
   // "#d9738f" -> "%23d9738f" for a data URI

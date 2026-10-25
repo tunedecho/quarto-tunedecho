@@ -16,35 +16,44 @@ $tunedecho.typ()$
   sectionnumbering: none,
   descriptor: [Mission-built software for higher education and publishing],
   location: [Brooklyn, NY],
-  fontsize: 11pt,
+  font: none,
+  heading-font: none,
+  heading-weight: auto,
+  fontsize: 12pt,
+  leading: 0.7em,
+  par-spacing: 1.35em,
+  tracking: 0pt,
+  body-width: 6.25in,
   doc,
 ) = {
   let c = te-palette(paper)
+  let wide = te-wide.with(body-width)
 
   set document(title: if title != none { title } else { doc-type })
   set document(author: authors.map(content-to-string).join(", ")) if authors.len() > 0
 
   set page(
     paper: "us-letter",
-    margin: (x: 0.75in, top: 0.9in, bottom: 1.1in),
+    margin: (left: 0.75in, right: 0.75in + te-extra(body-width), top: 0.9in, bottom: 1.1in),
     fill: te-paper-fill(paper),
     background: te-band(),
     header: context {
       if counter(page).get().first() > 1 {
-        te-running-head(c, if title != none { title } else { doc-type })
+        wide(te-running-head(c, if title != none { title } else { doc-type }))
       }
     },
     header-ascent: 0.3in,
     footer: context {
       if counter(page).get().first() > 1 {
-        te-footer(c, seal: false, descriptor, [Page #counter(page).display()])
+        wide(te-footer(c, seal: false, descriptor, [Page #counter(page).display()]))
       }
     },
     footer-descent: 0.3in,
   )
 
-  show: te-base.with(c, fontsize: fontsize, sectionnumbering: sectionnumbering,
-                     heading-sizes: (22pt, 15pt, 12pt))
+  show: te-base.with(c, font: font, heading-font: heading-font, heading-weight: heading-weight, fontsize: fontsize, leading: leading,
+                     par-spacing: par-spacing, tracking: tracking,
+                     sectionnumbering: sectionnumbering, heading-sizes: (18pt, 14pt, 12pt))
 
   // Cover page.
   image("wordmark-motto.png", width: 3in)
@@ -75,7 +84,7 @@ $tunedecho.typ()$
   let by = if authors.len() > 0 [#prepared-by \ #authors.join([, ])] else [#prepared-by]
   fields.push(cover-field([Prepared by], by))
   if date != none { fields.push(cover-field([Date], date)) }
-  grid(columns: (1fr,) * fields.len(), column-gutter: 0.4in, ..fields)
+  wide(grid(columns: (1fr,) * fields.len(), column-gutter: 0.4in, ..fields))
   place(bottom + left, image("seal.png", width: 0.8in))
   pagebreak()
 

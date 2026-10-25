@@ -1,16 +1,14 @@
-/*-- scss:uses --*/
-@import "_tokens";
-@import "_assets";
-
 /*-- scss:functions --*/
 @import "_marks";
 
 /*-- scss:defaults --*/
+@import "_assets";
 // Type
-$font-family-sans-serif: $te-font-sans;
+// Running text is the body serif; the sans is kept for labels, captions and the contents list.
+$font-family-sans-serif: $te-font-body;
 $font-family-monospace: $te-font-mono;
-$font-size-root: 17px;
-$line-height-base: 1.6;
+$font-size-root: 19px;
+$line-height-base: 1.5;
 $headings-font-family: $te-font-serif;
 $headings-font-weight: 400;
 $headings-color: $te-ink;
@@ -56,10 +54,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-// Running text stays within measure.
+// Running text stays within measure, with clear space between paragraphs.
 main p, main li, main blockquote, main dd {
   max-width: $te-measure;
 }
+main p { margin-bottom: 1.25em; }
+main li > p { margin-bottom: 0.5em; }
 main .cell-output p, main table p { max-width: none; }
 
 // Title block: the wordmark leads, then the title as one sentence.
@@ -93,6 +93,8 @@ main .cell-output p, main table p { max-width: none; }
   font-weight: 400;
 }
 .quarto-title-meta-contents, .quarto-title-meta-contents a {
+  font-family: $te-font-sans;
+  font-size: 0.85rem;
   color: $te-muted;
   text-decoration: none;
 }
@@ -116,6 +118,18 @@ main h2 {
 }
 main h3 { margin-top: 2rem; }
 h1, h2, h3, h4 { text-wrap: balance; }
+
+// Section headings use the heading sans at regular weight. Instrument Serif is a
+// condensed display face and is kept for the page title.
+main h1:not(.title), main h2, main h3, main h4, main h5 {
+  font-family: $te-font-heading;
+  font-weight: 400;
+  line-height: 1.2;
+}
+main h1:not(.title) { font-size: 1.7rem; }
+main h2 { font-size: 1.35rem; }
+main h3 { font-size: 1.15rem; }
+main h4, main h5 { font-size: 1rem; }
 h1 em, h2 em, h3 em { font-style: italic; }
 
 // A horizontal rule in markdown becomes the key rule.
@@ -157,7 +171,7 @@ div.sourceCode, pre.sourceCode, pre {
   td { border-bottom: 1px solid $te-rule-soft; }
   caption { color: $te-muted; font-size: 0.9rem; padding-left: 0; text-align: left; }
 }
-figcaption, .figure-caption, .table-caption { color: $te-muted; font-size: 0.9rem; }
+figcaption, .figure-caption, .table-caption, table caption { font-family: $te-font-sans; color: $te-muted; font-size: 0.8rem; }
 
 // Quotes and callouts
 blockquote {
@@ -188,11 +202,12 @@ blockquote {
   color: $te-muted;
   font-weight: 400;
 }
+.sidebar nav[role="doc-toc"] { font-family: $te-font-sans; font-size: 0.8rem; }
 .sidebar nav[role="doc-toc"] ul > li > a { border-left-color: $te-rule; color: $te-muted; }
 .sidebar nav[role="doc-toc"] ul > li > a.active { color: $te-ink; border-left-color: $te-ink; }
 
 // Footer
-.nav-footer { color: $te-muted; font-size: 0.85rem; }
+.nav-footer { font-family: $te-font-sans; color: $te-muted; font-size: 0.8rem; }
 
 @media print {
   body { background: $te-paper-print; }

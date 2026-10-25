@@ -46,6 +46,8 @@
 
 #let te-fonts = (
   serif: "Instrument Serif",
+  body: "Newsreader",
+  heading: "Figtree",
   sans: "Plus Jakarta Sans",
   cond: "Oswald",
   mono: ("Menlo", "DejaVu Sans Mono"),

@@ -11,19 +11,27 @@ $tunedecho.typ()$
   contact: (:),
   descriptor: [Mission-built software for higher education and publishing],
   location: [Brooklyn, NY],
-  fontsize: 11pt,
+  font: none,
+  heading-font: none,
+  heading-weight: auto,
+  fontsize: 12pt,
+  leading: 0.7em,
+  par-spacing: 1.35em,
+  tracking: 0pt,
+  body-width: 6.25in,
   doc,
 ) = {
   let c = te-palette(paper)
   let to-name = recipient.at("name", default: none)
   let sig-name = signature.at("name", default: none)
+  let wide = te-wide.with(body-width)
 
   set document(title: if to-name != none [Letter to #to-name] else [Letter])
   set document(author: content-to-string(sig-name)) if sig-name != none
 
   set page(
     paper: "us-letter",
-    margin: (x: 0.75in, top: 0.8in, bottom: 1.3in),
+    margin: (left: 0.75in, right: 0.75in + te-extra(body-width), top: 0.8in, bottom: 1.3in),
     fill: te-paper-fill(paper),
     background: te-band(),
     header: context {
@@ -32,20 +40,21 @@ $tunedecho.typ()$
         if to-name != none { parts.push(to-name) }
         if date != none { parts.push(date) }
         parts.push([Page #counter(page).display()])
-        te-running-head(c, parts.join([ · ]))
+        wide(te-running-head(c, parts.join([ · ])))
       }
     },
     header-ascent: 0.25in,
     footer: context {
-      te-footer(c, seal: counter(page).get().first() == 1, descriptor, location)
+      wide(te-footer(c, seal: counter(page).get().first() == 1, descriptor, location))
     },
     footer-descent: 0.3in,
   )
 
-  show: te-base.with(c, fontsize: fontsize)
+  show: te-base.with(c, font: font, heading-font: heading-font, heading-weight: heading-weight, fontsize: fontsize, leading: leading,
+                     par-spacing: par-spacing, tracking: tracking)
 
-  // Letterhead: wordmark with motto left, contact block right.
-  grid(
+  // Letterhead: wordmark with motto left, contact block right, at full width.
+  wide(grid(
     columns: (1fr, auto),
     align: (left + top, right + top),
     image("wordmark-motto.png", width: 2.6in),
@@ -57,7 +66,7 @@ $tunedecho.typ()$
         #contact.at("lines", default: ()).join(linebreak())
       ]
     ],
-  )
+  ))
   v(0.4in)
 
   // Date and recipient.
@@ -78,9 +87,9 @@ $tunedecho.typ()$
 
   // Salutation.
   if salutation != none {
-    block(below: 1.1em, salutation)
+    block(below: par-spacing, salutation)
   } else if to-name != none {
-    block(below: 1.1em)[Dear #to-name,]
+    block(below: par-spacing)[Dear #to-name,]
   }
 
   doc
